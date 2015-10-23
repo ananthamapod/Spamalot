@@ -29,7 +29,7 @@ module.exports = {
     user: process.env.MAILGUN_USER || 'postmaster@sandbox697fcddc09814c6b83718b9fd5d4e5dc.mailgun.org',
     password: process.env.MAILGUN_PASSWORD || '29eldds1uri6'
   },
-  
+
   mandrill: {
     user: process.env.MANDRILL_USER || 'hackathonstarterdemo',
     password: process.env.MANDRILL_PASSWORD || 'E1K950_ydLR4mHw12a0ldA'
@@ -37,7 +37,8 @@ module.exports = {
 
   sendgrid: {
     user: process.env.SENDGRID_USER || 'hslogin',
-    password: process.env.SENDGRID_PASSWORD || 'hspassword00'
+    password: process.env.SENDGRID_PASSWORD || 'hspassword00',
+    email: process.env.SENDGRID_EMAIL || 'hackathon@starter.com'
   },
 
   nyt: {
@@ -97,8 +98,10 @@ module.exports = {
   },
 
   twilio: {
-    sid: process.env.TWILIO_SID || 'AC6f0edc4c47becc6d0a952536fc9a6025',
-    token: process.env.TWILIO_TOKEN || 'a67170ff7afa2df3f4c7d97cd240d0f3'
+    //Real Twilio creds
+    sid: process.env.TWILIO_SID,
+    token: process.env.TWILIO_TOKEN,
+    number: process.env.TWILIO_NUMBER
   },
 
   clockwork: {

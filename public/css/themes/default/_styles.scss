@@ -2,8 +2,8 @@
 // -------------------------
 
 .btn {
-  border-radius: 0;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.11), 1px 1px 0 rgba(255, 255, 255, 0.21) inset;
+  border-radius: 0.5em;
+  //box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.11), 1px 1px 0 rgba(255, 255, 255, 0.21) inset;
 
   &:focus {
     outline: none;
@@ -15,7 +15,7 @@
 }
 
 .btn-default, .btn-default:focus {
-  background-image: linear-gradient(to bottom, #ffffff 60%, #f8f8f8 100%);
+  //background-image: linear-gradient(to bottom, #ffffff 60%, #f8f8f8 100%);
 }
 
 // Forms
@@ -46,6 +46,55 @@
       font-weight: 500;
       text-transform: uppercase;
       transition: all 0.2s linear;
+    }
+  }
+}
+
+.writing {
+  font-family: 'Satisfy', cursive;
+}
+
+.section {
+  padding-bottom: 2em;
+}
+
+.targets {
+  margin: 0.5em auto;
+  border-bottom: 4px solid #cff;
+}
+
+.add-target {
+  margin-top: 1em;
+}
+
+.select-wrap-wrap {
+    background: url(../img/down-chevron.png);
+    background-size: auto 70%;
+    background-position: 90% 20%;
+    background-repeat: no-repeat;
+    border: 1px solid #aaa;
+    border-radius: 0.3em;
+    display:inline-block;
+
+  .select-wrap {
+    overflow: hidden;
+    display:inline-block;
+    padding:0;
+
+    select {
+      position: relative;
+      background: transparent;
+      border: transparent;
+      margin-right: -1em;
+      padding:0;
+      text-transform: capitalize;
+      color: #666;
+      font-weight: 100;
+
+      option {
+        padding-right: 3em;
+        border: 1px solid #ccf;
+      }
     }
   }
 }

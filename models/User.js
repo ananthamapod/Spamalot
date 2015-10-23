@@ -2,24 +2,27 @@ var bcrypt = require('bcrypt-nodejs');
 var crypto = require('crypto');
 var mongoose = require('mongoose');
 
+var targetSchema = new mongoose.Schema({
+  name: String,
+  number: Number,
+  email: String,
+  message: String,
+  duration: Number,
+  handle: String
+});
+
 var userSchema = new mongoose.Schema({
   email: { type: String, unique: true, lowercase: true },
   password: String,
 
-  facebook: String,
-  twitter: String,
-  google: String,
-  github: String,
-  instagram: String,
-  linkedin: String,
-  tokens: Array,
+  phone: String,
+
+  targets: [targetSchema],
 
   profile: {
     name: { type: String, default: '' },
-    gender: { type: String, default: '' },
-    location: { type: String, default: '' },
-    website: { type: String, default: '' },
     picture: { type: String, default: '' }
+
   },
 
   resetPasswordToken: String,

@@ -40,7 +40,7 @@ exports.postLogin = function(req, res, next) {
     }
     req.logIn(user, function(err) {
       if (err) return next(err);
-      req.flash('success', { msg: 'Success! You are logged in.' });
+      req.flash('success', { msg: "Welcome, " + user.profile.name + "!" });
       res.redirect(req.session.returnTo || '/');
     });
   })(req, res, next);
@@ -84,7 +84,9 @@ exports.postSignup = function(req, res, next) {
 
   var user = new User({
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    phone: "x-(xxx)-xxx-xxxx",
+    targets: []
   });
 
   User.findOne({ email: req.body.email }, function(err, existingUser) {
@@ -120,10 +122,8 @@ exports.postUpdateProfile = function(req, res, next) {
   User.findById(req.user.id, function(err, user) {
     if (err) return next(err);
     user.email = req.body.email || '';
+    user.phone = req.body.phone || 'x-(xxx)-xxx-xxxx';
     user.profile.name = req.body.name || '';
-    user.profile.gender = req.body.gender || '';
-    user.profile.location = req.body.location || '';
-    user.profile.website = req.body.website || '';
 
     user.save(function(err) {
       if (err) return next(err);
@@ -339,7 +339,7 @@ exports.postForgot = function(req, res, next) {
       });
       var mailOptions = {
         to: user.email,
-        from: 'hackathon@starter.com',
+        from: secrets.sendgrid.email,
         subject: 'Reset your password on Hackathon Starter',
         text: 'You are receiving this email because you (or someone else) have requested the reset of the password for your account.\n\n' +
           'Please click on the following link, or paste this into your browser to complete the process:\n\n' +

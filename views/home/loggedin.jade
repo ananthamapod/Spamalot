@@ -1,0 +1,57 @@
+.row
+  .col-sm-12.section
+    h2 Your targets
+    hr
+    div.row
+      div.col-xs-9.col-md-10
+        div.row
+          div.col-xs-12.col-sm-6.col-md-3
+            h4 name
+          div.col-xs-12.col-sm-6.col-md-3
+            h4 phone
+          div.col-xs-12.col-sm-6.col-md-3
+            h4 email
+          div.col-xs-12.col-sm-6.col-md-3
+            h4 message type
+        each val in user.targets
+          div.row.writing.targets
+            div.col-xs-12.col-sm-6.col-md-3=val.name
+            div.col-xs-12.col-sm-6.col-md-3=val.number
+            div.col-xs-12.col-sm-6.col-md-3=val.email
+            div.col-xs-12.col-sm-6.col-md-3=val.message
+      div.col-xs-3.col-md-2
+        input.btn.btn
+    if (user.targets.length == 0)
+      div.alert.alert-info.alert-dismissable(role="alert")
+        button.close(type="button" data-dismiss="alert" aria-label="Close")
+          span(aria-hidden="true") &times;
+        | You have no current targets
+        div.close
+    div.row.add-target
+      div.col-xs-9.col-md-10
+        div.row
+          div.col-xs-12.col-sm-6.col-md-3.writing
+            input(name="name" type="text" placeholder="Name")
+          div.col-xs-12.col-sm-6.col-md-3.writing
+            input(name="number" type="text" placeholder="Phone")
+          div.col-xs-12.col-sm-6.col-md-3.writing
+            input(name="email" type="text" placeholder="email")
+          div.col-xs-12.col-sm-6.col-md-3.writing
+            div.select-wrap-wrap
+              div.select-wrap
+                select(name="message-type")
+                  option(value="motivational") Motivational
+                  option(value="flirty") Flirty
+                  option(value="funny") Funny
+                  option(value="annoying") Annoying
+                  option(value="angry") Angry
+      div.col-xs-3.col-md-2
+        input(type='hidden', name='_csrf', value=_csrf)
+        input.btn.btn-success(type="button" value="Add")
+    div.msg.message
+
+  .col-sm-12.section
+    h2 Your Defenses
+    hr
+script.
+  var profile = #{JSON.parse(JSON.stringify(user.profile)).name};
